@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+        <record id="product_phone_inherit" model="ir.ui.view">
+            <field name="name">product.template.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <field name="barcode" position="after">
+                    <field name="manufacturer_id"/>
+                    <field name="model_id" domain="[('manufacturer_id', '=', manufacturer_id)]"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="manufacturer_form_view">
+            <field name="name">manufacturer.form</field>
+            <field name="model">phonestore.manufacturer</field>
+            <field name="arch" type="xml">
+                <form string="Manufacturer Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="model_ids">
+                                <tree editable="bottom">
+                                    <field name="manufacturer_id"
+                                           invisible="1"
+                                           default="context.get('manufacturer_id')"/>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="model_form_view">
+            <field name="name">model.form</field>
+            <field name="model">phonestore.model</field>
+            <field name="arch" type="xml">
+                <form string="Model Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="manufacturer_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="manufacturer_tree_view">
+            <field name="name">manufacturer.tree</field>
+            <field name="model">phonestore.manufacturer</field>
+            <field name="arch" type="xml">
+                <tree string="Manufacturer Tree">
+                    <field name="name"/>
+                    <field name="model_ids"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="model_tree_view">
+            <field name="name">model.tree</field>
+            <field name="model">phonestore.model</field>
+            <field name="arch" type="xml">
+                <tree string="Model Tree">
+                    <field name="name"/>
+                    <field name="manufacturer_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="manufacturer_action">
+            <field name="name">Manufacturers</field>
+            <field name="res_model">phonestore.manufacturer</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>Add Manufacturer</p>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="model_action">
+            <field name="name">Models</field>
+            <field name="res_model">phonestore.model</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>Add Model</p>
+            </field>
+        </record>
+
+
+        <menuitem id="manufacturer_menu"
+                  name="Manufacturers"
+                  parent="sale.menu_sale_config"
+                  action="manufacturer_action"
+        />
+
+        <menuitem id="model_menu"
+                  name="Models"
+                  parent="sale.menu_sale_config"
+                  action="model_action"
+        />
+
+</odoo>

@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+          <record id="manufacturer_0" model="phonestore.manufacturer">
+            <field name="name">Apple</field>
+          </record>
+
+          <record id="manufacturer_1" model="phonestore.manufacturer">
+            <field name="name">Huawei</field>
+          </record>
+
+          <record id="manufacturer_2" model="phonestore.manufacturer">
+            <field name="name">Xiaomi</field>
+          </record>
+
+          <record id="model_0" model="phonestore.model">
+            <field name="name">Iphone X</field>
+            <field name="manufacturer_id" ref="manufacturer_0"/>
+          </record>
+
+          <record id="model_1" model="phonestore.model">
+            <field name="name">Iphone 8 Plus</field>
+            <field name="manufacturer_id" ref="manufacturer_0"/>
+          </record>
+
+          <record id="model_2" model="phonestore.model">
+            <field name="name">Honor 20</field>
+            <field name="manufacturer_id" ref="manufacturer_1"/>
+          </record>
+
+          <record id="model_3" model="phonestore.model">
+            <field name="name">P30</field>
+            <field name="manufacturer_id" ref="manufacturer_1"/>
+          </record>
+
+          <record id="model_4" model="phonestore.model">
+            <field name="name">P20</field>
+            <field name="manufacturer_id" ref="manufacturer_1"/>
+          </record>
+
+          <record id="model_5" model="phonestore.model">
+            <field name="name">Redmi Note 7</field>
+            <field name="manufacturer_id" ref="manufacturer_2"/>
+          </record>
+    </data>
+</odoo>
